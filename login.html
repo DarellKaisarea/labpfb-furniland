@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniland's Login Page</title>
+</head>
+<link rel="stylesheet" href="login.css">
+<body>
+    <nav>
+        <div class="left">
+            <p>Furniland</p>
+            <button><a href="#">Home</a></button>
+        </div>
+        <button class="login">Login</button>
+    </nav>
+
+    <form id="login">
+        <h1>Login</h1>
+
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email">
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+
+        <div class="remember">
+            <input type="checkbox" class="checkbox" name="remember" id="remember">
+            <label for="remember" class="rmb-label">Remember me</label>    
+        </div>
+        
+        <br>
+        <button type="submit">Login</button>
+
+        <p>Dont have an account? <a href="register">Register here</a></p>
+    </form>
+    
+    <footer>&copy; 2025 Furniland. All rights reserved
+        <br>Contact us at <a href="support">furniland.support@gmail.com</a>
+    </footer>
+</body>
+<script src="login.js"></script>
+</html>

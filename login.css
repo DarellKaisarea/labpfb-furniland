@@ -1,0 +1,134 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    align-items: center;
+    background-color: #000000;
+    border-bottom: 1px solid #ffffff40;
+}
+
+nav .left {
+    display: flex;
+    gap: 10px;
+}
+
+nav .left p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+nav .left button {
+    cursor: pointer;
+    border-style: none;
+    background-color: transparent;
+}
+
+nav .left a {
+    text-decoration: none;
+    color: #EFECE3;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+nav button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: #EFECE3;
+    font-weight: bold;
+}
+
+form {
+    margin: 50px auto;
+    background-color: #ffffff;
+    padding: 15px;
+    width: 350px;
+    color: black;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+form h1 {
+    text-align: center;
+    margin: 10px;
+    font-size: 24px;
+}
+
+form label {
+    margin-bottom: 10px;
+}
+
+form input {
+    margin: 5px 0 10px 0;
+    padding-right: 185px;
+    height: 28px;
+    background-color: rgb(228, 228, 228);
+    border: 1px solid rgb(141, 141, 141);
+    border-radius: 5px;
+}
+
+form input:hover {
+    background-color: rgb(186, 186, 186);
+}
+
+.checkbox {
+    height: auto;
+    margin: 0;
+}
+
+.rmb-label {
+    margin: 0;
+}
+
+.remember {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+form button {
+    border: none;
+    background-color: #146ef5;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    width: 350px;
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form button:hover {
+    cursor: pointer;
+    background-color: #0b5cd4;
+}
+
+footer {
+    border-top: 1px solid #ffffff40;
+    margin-top: auto;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px;
+}
+
+footer a{
+    color: #146ef5;
+}
+
