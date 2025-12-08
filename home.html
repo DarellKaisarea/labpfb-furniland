@@ -1,114 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Furniland - Home</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/script.js"></script> 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Furniland - Home</title>
+  <link rel="stylesheet" href="home.css" />
 </head>
 <body>
 
-<header>
-    <nav>
-        <a href="index.html" class="logo">Furniland</a>
-        <ul class="nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Register</a></li>
+<nav class="navbar">
+  <div class="brand"><a href="home.php">Furniland</a></div>
+  <ul class="nav-links">
 
-            <!-- Versi Member (nanti diganti pakai PHP) -->
-            <!--
-            <li><a href="index.php">Home</a></li>
-            <li><a href="catalog.php">Catalog</a></li>
-            <li><a href="cart.php">Cart</a></li>
-            <li><a href="profile.php">Jevon</a></li>
-            <li><a href="logout.php">Logout</a></li>
-            -->
+    <?php if ($role === 'admin'): ?>
+      <li><a href="dashboard.php">Dashboard</a></li>
+      <li><a href="manage_products.php">Manage Products</a></li>
+      <li><a href="manage_vendors.php">Manage Vendors</a></li>
+      <li><a href="view_transactions.php">Transactions</a></li>
+      <li><a href="profile.php"><?= htmlspecialchars($username) ?></a></li>
+      <li><a href="logout.php">Logout</a></li>
 
-            <!-- Versi Admin -->
-            <!--
-            <li><a href="dashboard.php">Dashboard</a></li>
-            <li><a href="manage_users.php">Manage Users</a></li>
-            <li><a href="manage_vendors.php">Manage Vendors</a></li>
-            <li><a href="manage_products.php">Manage Products</a></li>
-            <li><a href="view_transactions.php">Transactions</a></li>
-            <li><a href="profile.php">Admin</a></li>
-            <li><a href="logout.php">Logout</a></li>
-            -->
-        </ul>
-    </nav>
+    <?php elseif ($role === 'member'): ?>
+      <li><a href="catalog.php">Catalog</a></li>
+      <li><a href="cart.php">Cart</a></li>
+      <li><a href="profile.php"><?= htmlspecialchars($username) ?></a></li>
+      <li><a href="logout.php">Logout</a></li>
+
+   <?php else ($role === 'guest'): ?>
+      <li><a href="catalog.php">Catalog</a></li>
+      <li><a href="login.php">Login</a></li>
+      <li><a href="register.php">Register</a></li>
+    <?php endif; ?>
+
+  </ul>
+</nav>
+
+<header class="hero">
+  <h1>Welcome to Furniland</h1>
+  <p>Discover quality furniture from trusted vendors.</p>
+  <div class="hero-actions">
+    <a class="btn" href="catalog.php">Browse Catalog</a>
+  </div>
 </header>
 
-<section class="hero">
-    <h1>Furniland</h1>
-    <p>Find your perfect furniture.</p>
-</section>
+<main class="container">
+  <section class="featured">
+    <h2>Featured Products</h2>
 
-<section class="products-grid">
+    <div class="product-grid">
 
-    <!-- PRODUCT CARD 1 -->
-    <div class="product-card">
-        <img src="assets/img/sample1.jpg" alt="">
-        <h3>Meja Kayu Jati</h3>
-        <p class="vendor">Kayu Indah</p>
-        <p class="price">Rp 1.500.000</p>
-        <a class="btn" href="product_detail.html">View Detail</a>
+      <?php if (empty($products)): ?>
+        <div class="empty">No products found.</div>
+
+      <?php else: ?>
+        <?php foreach ($products as $p): ?>
+          <article class="card">
+
+            <div class="card-thumb">
+              <img src="assets/placeholder.png" alt="<?= htmlspecialchars($p['product_name']); ?>" />
+            </div>
+
+            <div class="card-body">
+              <h3><?= htmlspecialchars($p['product_name']); ?></h3>
+              <p class="vendor">by <?= htmlspecialchars($p['vendor_name']); ?></p>
+              <p class="price">Rp <?= number_format($p['price'], 0, ',', '.'); ?></p>
+
+              <a class="detail-link" href="product_detail.php?id=<?= $p['id']; ?>">View Detail</a>
+            </div>
+
+          </article>
+        <?php endforeach; ?>
+      <?php endif; ?>
+
     </div>
+  </section>
+</main>
 
-    <!-- PRODUCT CARD 2 -->
-    <div class="product-card">
-        <img src="assets/img/sample2.jpg" alt="">
-        <h3>Kursi Santai</h3>
-        <p class="vendor">Modern Living</p>
-        <p class="price">Rp 450.000</p>
-        <a class="btn" href="product_detail.html">View Detail</a>
-    </div>
-
-    <!-- PRODUCT CARD 3 -->
-    <div class="product-card">
-        <img src="assets/img/sample3.jpg" alt="">
-        <h3>Lemari Pakaian</h3>
-        <p class="vendor">Scandi Home</p>
-        <p class="price">Rp 1.250.000</p>
-        <a class="btn" href="product_detail.html">View Detail</a>
-    </div>
-
-    <!-- PRODUCT CARD 4 -->
-    <div class="product-card">
-        <img src="assets/img/sample4.jpg" alt="">
-        <h3>Rak Buku Industrial</h3>
-        <p class="vendor">Modern Living</p>
-        <p class="price">Rp 750.000</p>
-        <a class="btn" href="product_detail.html">View Detail</a>
-    </div>
-
-    <!-- PRODUCT CARD 5 -->
-    <div class="product-card">
-        <img src="assets/img/sample5.jpg" alt="">
-        <h3>Sofa Minimalis</h3>
-        <p class="vendor">Kayu Indah</p>
-        <p class="price">Rp 2.000.000</p>
-        <a class="btn" href="product_detail.html">View Detail</a>
-    </div>
-
-    <!-- PRODUCT CARD 6 -->
-    <div class="product-card">
-        <img src="assets/img/sample6.jpg" alt="">
-        <h3>Meja Tulis</h3>
-        <p class="vendor">Scandi Home</p>
-        <p class="price">Rp 350.000</p>
-        <a class="btn" href="product_detail.html">View Detail</a>
-    </div>
-
-</section>
-
-<footer>
-    <div class="container">
-        <p>Contact: contact@furniland.com | Phone: +62-812-3456-7890</p>
-        <p>&copy; 2025 Furniland</p>
-    </div>
+<footer class="site-footer">
+  <div>
+    <strong>Furniland</strong><br/>
+    Contact: +62 812-3456-7890 · support@furniland.id
+  </div>
+  <div>© Furniland - Demo Project</div>
 </footer>
 
+<script src="home.js"></script>
 </body>
 </html>
